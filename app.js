@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import { render } from 'react-dom';
 import Home from './containers/Home'
 import Test from './containers/Test'
+import reducers from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk';
+
+const store = createStore(reducers, applyMiddleware(thunk));
 
 import {
   BrowserRouter as Router,
@@ -10,16 +16,12 @@ import {
 } from 'react-router-dom'
 
 
-
-
 render(
-<div>
+<Provider store={store}>
   <Router>
     <div>
-      <Route path="/test" component={Home} />
-      <Route path="/" component={Test} />
+      <Route path="/" component={Home} />
+      <Route path="/test" component={Test} />
     </div>
   </Router>
-</div>
-
-, document.getElementById('app'));
+</Provider>, document.getElementById('app'));

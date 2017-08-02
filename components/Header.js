@@ -9,7 +9,7 @@ export default function Header({ cuandoAlguienTeHagaClick,
     {children}
     Dato: {dato}
     <ul>
-      {lista.map(item=><li> {item * 2} </li>)}
+      {lista.map(item=><li> {item.name} </li>)}
     </ul>
   </h1>
 }
